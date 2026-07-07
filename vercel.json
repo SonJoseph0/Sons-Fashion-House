@@ -1,3 +1,5 @@
 {
-  "outputDirectory": "dist"
+  "buildCommand": "pnpm --filter @workspace/sons-moda run build",
+  "outputDirectory": "artifacts/sons-moda/dist/public",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
