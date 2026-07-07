@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Sons Moda Masculina"
+version = "1.0.0"
+id = "artifacts/sons-moda"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22808
+
+[services.development]
+run = "pnpm --filter @workspace/sons-moda run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sons-moda", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sons-moda/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22808"
+BASE_PATH = "/"
